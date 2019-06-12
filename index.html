@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8" />
+</head>
+<body onload="getAuthCode()">
+	<div id="DivAuthCode"></div>
+
+
+	<script>
+		function getAuthCode() {			
+			var url = window.location.href;
+			var substring = 'code=';
+			var index = url.indexOf(substring);
+
+			if (index !== -1) {
+				var authcode =  url.substring((index + substring.length) , url.length )
+
+				try{
+					var div = document.getElementById("DivAuthCode");
+					div.textContent = authcode;
+					window.parent.postMessage(authcode , '*');
+				}
+				catch(e){
+				        //unable to post the message back to the opener window
+					//store the message in a localStorage
+					localStorage.setItem("auth_code",authcode);
+				}
+
+				window.close();
+			}
+		}
+	</script>
+
+</body>
+</html>
