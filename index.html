@@ -20,9 +20,11 @@
 				try{
 					var div = document.getElementById("DivAuthCode");
 					div.textContent = authcode;
+					alert('posting message to parent window');
 					window.parent.postMessage(authcode , '*');
 				}
 				catch(e){
+					alert('error occurred while posting - trying with localStorage. error: '  + e);
 				        //unable to post the message back to the opener window
 					//store the message in a localStorage
 					localStorage.setItem("auth_code",authcode);
