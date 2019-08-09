@@ -22,7 +22,13 @@
 					div.textContent = authcode;
 					//alert('posting message to parent window');
 					window.parent.localStorage.setItem("auth_code",authcode);
-					window.opener.postMessage(authcode , '*');
+					debugger;
+					var iFrame = window.opener.document.getElementById("frameWebLogin");
+					if (iFrame && iFrame != null){
+						if(iFrame.contentWindow)
+							iFrame.contentWindow.postMessage(authcode, '*');
+					}
+					//window.opener.postMessage(authcode , '*');
 				}
 				catch(e){
 					alert('error occurred while posting - trying with localStorage. error: '  + e);
