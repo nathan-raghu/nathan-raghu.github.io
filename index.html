@@ -10,6 +10,7 @@
 
 	<script>
 		function getAuthCode() {			
+			debugger;
 			var url = window.location.href;
 			var substring = 'code=';
 			var index = url.indexOf(substring);
@@ -37,7 +38,7 @@
 					localStorage.setItem("auth_code",authcode);
 				}
 
-				window.close();
+				//window.close();
 			}
 		}
 	</script>
