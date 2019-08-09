@@ -16,13 +16,13 @@
 
 			if (index !== -1) {
 				var authcode =  url.substring((index + substring.length) , url.length )
-				debugger;
+				
 				try{
 					var div = document.getElementById("DivAuthCode");
 					div.textContent = authcode;
 					//alert('posting message to parent window');
 					window.parent.localStorage.setItem("auth_code",authcode);
-					window.parent.postMessage(authcode , '*');
+					window.opener.postMessage(authcode , '*');
 				}
 				catch(e){
 					alert('error occurred while posting - trying with localStorage. error: '  + e);
