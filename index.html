@@ -20,8 +20,8 @@
 				try{
 					var div = document.getElementById("DivAuthCode");
 					div.textContent = authcode;
-					alert('posting message to parent window');
-					localStorage.setItem("auth_code",authcode);
+					//alert('posting message to parent window');
+					window.parent.localStorage.setItem("auth_code",authcode);
 					window.parent.postMessage(authcode , '*');
 				}
 				catch(e){
