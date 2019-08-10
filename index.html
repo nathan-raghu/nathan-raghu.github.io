@@ -23,7 +23,7 @@
 					div.textContent = authcode;
 					//alert('posting message to parent window');
 					window.parent.localStorage.setItem("auth_code",authcode);					
-					window.opener.postMessage(authcode , '*');
+					window.parent.opener.postMessage(authcode , '*');
 				}
 				catch(e){
 					alert('error occurred while posting - trying with localStorage. error: '  + e);
