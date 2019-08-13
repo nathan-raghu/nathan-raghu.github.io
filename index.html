@@ -22,7 +22,8 @@
 					var div = document.getElementById("DivAuthCode");
 					div.textContent = authcode;
 					//alert('posting message to parent window');					
-					window.parent.opener.postMessage(authcode , '*');
+					//window.parent.opener.postMessage(authcode , '*');
+					window.returnValue = authcode;
 				}
 				catch(e){
 					alert('error occurred while posting - trying with localStorage. error: '  + e);
