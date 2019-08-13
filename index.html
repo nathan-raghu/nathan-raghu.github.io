@@ -21,8 +21,7 @@
 				try{
 					var div = document.getElementById("DivAuthCode");
 					div.textContent = authcode;
-					//alert('posting message to parent window');
-					window.parent.localStorage.setItem("auth_code",authcode);					
+					//alert('posting message to parent window');					
 					window.parent.opener.postMessage(authcode , '*');
 				}
 				catch(e){
