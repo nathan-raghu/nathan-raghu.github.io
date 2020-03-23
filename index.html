@@ -14,33 +14,27 @@
 			var url = window.location.href;			
 			var substring = 'code=';
 			var index = url.indexOf(substring);
+			var substring2 = '&state=';
+			var index2 = url.indexOf(substring2);
 
 			if (index !== -1) {
 				debugger;
 				var authcode =  url.substring((index + substring.length) , url.length )
-				var srcHostUrl = url.split('&')[0].split('?h=')[1];
-				var newUrl = (srcHostUrl + '&code=' + authcode);
+				var state = url.substring((index2 + substring2.length) , url.length )
+				alert('State is : ' + state);
+				var strState = window.btoa(state);
+				alert('String form of State is : ' + strState);
+				
+				var newUrl = (strState + '&code=' + authcode);
 				try{
 					var div = document.getElementById("DivAuthCode");
 					div.textContent = authcode;
-					//alert('posting message to parent window');					
-					/*if (window.parent){
-						if (window.parent.opener)
-							window.parent.opener.postMessage(authcode , '*');
-						else 
-							window.parent.postMessage(authcode,'*');
-					}*/
 					alert('New Host Url : ' + decodeURI(newUrl));
 					location.href = decodeURI(newUrl);
 				}
 				catch(e){
 					alert('error occurred while posting - trying with localStorage. error: '  + e);
-				        //unable to post the message back to the opener window
-					//store the message in a localStorage
-					//localStorage.setItem("auth_code",authcode);
-				}
-
-				
+				}				
 			}
 		}
 	</script>
