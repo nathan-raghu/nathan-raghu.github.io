@@ -38,8 +38,16 @@
 						}
 					}
 					
-					redirect_url = window.atob(state) + "?code=" + auth_code;
-					alert('Url to redirect : ' + redirect_url);					
+					redirect_url = window.atob(state);
+					
+					if (redirect_url.indexOf('?') > 0)
+						redirectUrl += "&code=" + auth_code;					
+					else 
+						redirectUrl += "?code=" + auth_code;
+					
+					alert('Url to redirect : ' + redirect_url);
+					
+					location.href = redirect_url;
 				}
 			}
 		}
