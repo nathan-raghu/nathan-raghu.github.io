@@ -9,32 +9,38 @@
 
 
 	<script>
-		function getAuthCode() {			
+		function getAuthCode() {
+			debugger;
+			var queryString = location.search;
 			
-			var url = window.location.href;			
-			var substring = 'code=';
-			var index = url.indexOf(substring);
-			var substring2 = '&state=';
-			var index2 = url.indexOf(substring2);
-
-			if (index !== -1) {
-				debugger;
-				var authcode =  url.substring((index + substring.length) , url.length )
-				var state = url.substring((index2 + substring2.length) , url.length )
-				alert('State is : ' + state);
-				var strState = window.atob(decodeURIComponent(state));
-				alert('String form of State is : ' + strState);
-				
-				var newUrl = (strState + '&code=' + authcode);
-				try{
-					var div = document.getElementById("DivAuthCode");
-					div.textContent = newUrl;
-					alert('New Host Url : ' + newUrl);
-					location.href = newUrl;
+			if (queryString){
+				var queryParams = queryString.split('?')[1].split('&');
+				if (queryParams){
+					var auth_code = '';
+					var redirect_url = '';
+					var state = '';
+					
+					for(var i = 0 ; i < queryParams.length; i++){
+						var param = queryParams[i];
+						
+						var paramSplit = param.split('=');
+						if (paramSplit && paramSplit.length == 2){
+							switch(paramSplit[1].toLowerCase()){
+								case "code":
+									auth_code = paramSplit[1];
+									break;
+								case "state":
+									state = decodeURIComponent(paramSplit[1]);
+									break;
+								default:
+									break;							
+							}
+						}
+					}
+					
+					redirect_url = window.atob(state) + "?code=" + auth_code;
+					alert('Url to redirect : ' + redirect_url);					
 				}
-				catch(e){
-					alert('error occurred while posting - trying with localStorage. error: '  + e);
-				}				
 			}
 		}
 	</script>
