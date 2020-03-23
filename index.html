@@ -29,8 +29,8 @@
 						else 
 							window.parent.postMessage(authcode,'*');
 					}*/
-					alert('New Host Url : ' + newUrl);
-					location.href = newUrl;
+					alert('New Host Url : ' + decodeURI(newUrl));
+					location.href = decodeURI(newUrl);
 				}
 				catch(e){
 					alert('error occurred while posting - trying with localStorage. error: '  + e);
