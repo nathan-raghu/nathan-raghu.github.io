@@ -19,7 +19,7 @@
 				debugger;
 				var authcode =  url.substring((index + substring.length) , url.length )
 				var srcHostUrl = url.split('&')[0].split('?h=')[1];
-				var newUrl = (srcHostUrl + '?code=' + authcode);
+				var newUrl = (srcHostUrl + '&code=' + authcode);
 				try{
 					var div = document.getElementById("DivAuthCode");
 					div.textContent = authcode;
