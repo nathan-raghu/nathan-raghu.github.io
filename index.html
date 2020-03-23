@@ -16,6 +16,7 @@
 			var index = url.indexOf(substring);
 
 			if (index !== -1) {
+				debugger;
 				var authcode =  url.substring((index + substring.length) , url.length )
 				var srcHostUrl = url.split('&')[0].split('?h=')[1];
 				var newUrl = (srcHostUrl + '?code=' + authcode);
@@ -39,7 +40,7 @@
 					//localStorage.setItem("auth_code",authcode);
 				}
 
-				window.close();
+				
 			}
 		}
 	</script>
