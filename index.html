@@ -22,7 +22,7 @@
 				var authcode =  url.substring((index + substring.length) , url.length )
 				var state = url.substring((index2 + substring2.length) , url.length )
 				alert('State is : ' + state);
-				var strState = window.btoa(decoreURI(state));
+				var strState = window.btoa(decodeURI(state));
 				alert('String form of State is : ' + strState);
 				
 				var newUrl = (strState + '&code=' + authcode);
