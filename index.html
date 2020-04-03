@@ -85,7 +85,7 @@
                 console.log('getQueryParameters: Splitting querystring - ' + queryString);
 
                 var queryParams = queryString.split('?')[1].split('&');
-                if (queryParams && isArray(queryParams) && queryParams.length > 0) {
+                if (queryParams && Array.isArray(queryParams) && queryParams.length > 0) {
                     //getting the authcode and state param values from the querystring
                     var auth_code = '';
                     var state = '';
@@ -112,7 +112,7 @@
                     //get the verison info from the state param value
                     var version = 0;
                     var splitState = state.split('##');
-                    if (splitState && isArray(splitState) && splitState.length == 2) {
+                    if (splitState && Array.isArray(splitState) && splitState.length == 2) {
                         state = splitState[0];
                         version = splitState[1];
                     }
@@ -127,7 +127,7 @@
                     console.log('getQueryParameters: Return object - ' + returnObj);
                 }
                 else {
-                    console.log('getQueryParameters: Query parameters is not valid - ' + queryParams + ' - ' + isArray(queryParams));
+                    console.log('getQueryParameters: Query parameters is not valid - ' + queryParams + ' - IsArray: ' + Array.isArray(queryParams));
                 }
             }
 
