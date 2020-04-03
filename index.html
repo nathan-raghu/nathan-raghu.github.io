@@ -7,8 +7,7 @@
 <body onload="getAuthCode()">
 	<div id="DivAuthCode"></div>
 	<script>
-        function getAuthCode(){
-	    debugger;
+        function getAuthCode(){	   
             var authParamObj = null;
 
             try {
@@ -56,8 +55,7 @@
 				self.close();
 			}
 		}
-        function getAuthCode14(authParams) {
-		debugger;
+        function getAuthCode14(authParams) {		
 
             console.log('getAuthCode14: Auth Params - ' + authParams);
 
@@ -71,8 +69,7 @@
                     redirect_url += "?code=" + authParams.authCode;
 
                 console.log('getAuthCode14: Redirecting to - ' + redirect_url);
-                location.href = redirect_url;
-		alert(redirect_url);
+                location.href = redirect_url;		
             }
         }
 
