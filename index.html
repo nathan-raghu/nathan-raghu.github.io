@@ -62,7 +62,7 @@
 
             if (authParams != null) {
 
-                var redirect_url = authParams.redirectUrl;
+                var redirect_url = authParams.url;
 
                 if (redirect_url.indexOf('?') > 0)
                     redirect_url += "&code=" + authParams.authCode;
