@@ -62,7 +62,7 @@
 
             if (authParams != null) {
 
-                var redirect_url = window.atob(authParams.state);
+                var redirect_url = authParams.redirectUrl;
 
                 if (redirect_url.indexOf('?') > 0)
                     redirect_url += "&code=" + authParams.authCode;
@@ -88,6 +88,7 @@
                 if (queryParams && Array.isArray(queryParams) && queryParams.length > 0) {
                     //getting the authcode and state param values from the querystring
                     var auth_code = '';
+		    var url = '';
                     var state = '';
 
                     console.log('getQueryParameters: Getting authcode and state');
@@ -111,9 +112,10 @@
                     console.log('getQueryParameters: - getting the version information from the state object');
                     //get the verison info from the state param value
                     var version = 0;
-                    var splitState = state.split('##');
+		    var decodedState = window.atob(state);
+                    var splitState = decodedState.split('##');
                     if (splitState && Array.isArray(splitState) && splitState.length == 2) {
-                        state = splitState[0];
+                        url = splitState[0];
                         version = splitState[1];
                     }
 
@@ -121,7 +123,7 @@
 
                     //setting property and its value for the object
                     returnObj.authCode = auth_code;
-                    returnObj.state = state;
+                    returnObj.url = url;
                     returnObj.version = version;
 
                     console.log('getQueryParameters: Return object - ' + returnObj);
